@@ -75,21 +75,25 @@ const userinfo = new mongoose.Schema({
       type: String,
       required: true,
       trim: true,
+      maxLength: 20,
     },
     city: {
       type: String,
       required: true,
       trim: true,
+      maxLength: 20,
     },
     state: {
       type: String,
       required: true,
       trim: true,
+      maxLength: 20,
     },
     street: {
       type: String,
       required: true,
       trim: true,
+      maxLength: 20,
     },
   },
 });
