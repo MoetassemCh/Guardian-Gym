@@ -7,7 +7,7 @@ const cartSchema = new Schema({
     status: {
         type: Boolean,
         required: true,
-        unique:[true, "PLease add a cart status"],
+        unique:[true, "PLease add a cart status"]
     
     }
 

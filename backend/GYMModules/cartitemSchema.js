@@ -12,7 +12,7 @@ const cartItemSchema = new Schema({
     
     },
     discount: {
-        type: Integer,
+        type: Double,
     },
     price: {
         type: Double,
@@ -20,7 +20,7 @@ const cartItemSchema = new Schema({
         min:1
     },
     cart_id: {type: mongoose.Schema.Types.ObjectId, ref:'cartSchema' },
-    product_id: {type: mongoose.Schema.Types.ObjectId, ref:'products' },
+    product_id: {type: mongoose.Schema.Types.ObjectId, ref:'products' }
 
 
 });
