@@ -1,7 +1,7 @@
 const dbconnect =require("./connection.js")
 const mongoose = require("mongoose");
 const usersModel = require("./GYMModules/usersSchema");
-
+const showErrors=require("./showErrors")
 
 
 const user1 = new usersModel({
@@ -10,19 +10,18 @@ const user1 = new usersModel({
       firstName: "moetassem",
       lastName: "chebbo",
       email: "moetassem@gmail.com",
-      password: "moe12",
-      phoneNumber: "31312",
-    },
-  ],
-  address: [
-    {
-      country: "Lebanon",
-      city: "barja",
-      state: "mount lebanon",
-      street: "naaora",
+      password: "M@e123456",
+      phoneNumber: "12-1234-4321",
+      address: {
+        country: "Lebanon",
+        city: "barja",
+        state: "mount lebanon",
+        street: "naaora",
+      },
     },
   ],
 });
+
 
 const user2 = new usersModel({
   userinfo: [
@@ -30,19 +29,17 @@ const user2 = new usersModel({
       firstName: "ali",
       lastName: "chebbo",
       email: "ali@gmail.com",
-      password: "moe12",
-      phoneNumber: "31312",
+      password: "M@e123456",
+      phoneNumber: "12-1234-4321",
+      address: {
+        country: "Lebanon",
+        city: "barja",
+        state: "mount lebanon",
+        street: "naaora",
+      },
     },
   ],
-  address: [
-    {
-      country: "Lebanon",
-      city: "barja",
-      state: "mount lebanon",
-      street: "naaora",
-    },
-  ],
-  isAdmin:"true"
+  isAdmin: "true",
 });
 
 
