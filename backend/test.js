@@ -1,6 +1,7 @@
 const dbconnect =require("./connection.js")
 const mongoose = require("mongoose");
 const usersModel = require("./GYMModules/usersSchema");
+const CategoryModel = require("./GYMModules/CategoriesShcema");
 const showErrors=require("./showErrors")
 
 
@@ -44,10 +45,38 @@ const user2 = new usersModel({
 
 
 
+const exercise1 = new CategoryModel({
+  categoryName: "6 pack",
+  exercises: [
+    {
+      exercisesName: "lift",
+      Steps: ["dasd", "dsa", "sad", "dsa", "esdasd"],
+    },
+    {
+      exercisesName: "up",
+      Steps: ["gdfdf", "wqewq"],
+    },
+  ],
+});
+
+const exercise2 = new CategoryModel({
+  categoryName: "push up",
+  exercises: [
+    {
+      exercisesName: "lift",
+      Steps: ["dasd", "dsa", "sad", "dsa"],
+    },
+    {
+      exercisesName: "up",
+      Steps: ["gdfdf", "wqewq","adsda"],
+    },
+  ],
+});
 
 
 const drop_collection = async () => {
   await usersModel.collection.drop();
+  await CategoryModel.collection.drop();
 };
 
 drop_collection().then(
@@ -71,5 +100,22 @@ user1
     
   });
 
+  exercise1
+    .save()
+    .then((result) => {
+      console.log("exercise1 Added!");
+    })
+    .catch((error) => {
+      showErrors(error);
+    });
 
+
+exercise2
+  .save()
+  .then((result) => {
+    console.log("exercise2 Added!");
+  })
+  .catch((error) => {
+    showErrors(error);
+  });
 })

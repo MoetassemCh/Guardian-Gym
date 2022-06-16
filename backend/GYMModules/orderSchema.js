@@ -1,28 +1,31 @@
-// models/Person.js
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const users = require("./usersSchema");
+const Products=require("./ProductsSchema")
+const cart = require("./cartSchema");
 
+//costs 
+//total
+//subtotal
+//tax
 
-const orderSchema = new Schema(
+const OrderSchema = new Schema(
   {
+    users: { type: mongoose.Schema.Types.ObjectId, ref: "users" },
+    //we have product id in cartitem 
+    Products: [{ type: mongoose.Schema.Types.ObjectId, ref: "Products" }],
+    //
+    cart: [{ type: mongoose.Schema.Types.ObjectId, ref: "cart" }],
     isPayed: {
       type: Boolean,
       required: true,
       default: false,
     },
-    products: {
-      type: objectid,
-      required: true,
-    },
-    
-    cart: [cart],
-
-    userinfo: [userinfo],
   },
   { timestamps: true }
 );
 
 // Create a model with the specific schema
-const orderModel = mongoose.model("orderModel", orderSchema);
+const OrderModel = mongoose.model("Orders", OrderSchema);
 // export the created model
-module.exports = orderModel;
+module.exports = OrderModel;
