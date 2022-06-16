@@ -6,6 +6,7 @@ const ProductsSchema = new Schema({
         type:String,
         required:true,
         unique:[true, "PLease add a product name"],
+
     },
 
     ProductDescription:{
@@ -18,12 +19,13 @@ const ProductsSchema = new Schema({
         require:true,
     },
     Images:{
-    type:Array,
+    type:Blob,
     required:true
     },
 
     sale:{
-        type:String,
+        type:Boolean,
+
     }
 
 });
