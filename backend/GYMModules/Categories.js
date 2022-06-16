@@ -9,7 +9,7 @@ const CategorySchema = new Schema({
         required: true,
         unique:[true, "PLease add a category name"],
     
-    },
+    }
 
 });
 // Create a model with the specific schema
