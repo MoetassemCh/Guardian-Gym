@@ -8,6 +8,7 @@ const OrderSchema = new Schema({
     Products:[ { type: mongoose.Schema.Types.ObjectId, ref: "Products" }],
 
 });
+
 // Create a model with the specific schema
 const OrderModel = mongoose.model("Orders", OrderSchema);
 // export the created model

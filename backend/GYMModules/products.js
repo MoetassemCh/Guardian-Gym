@@ -4,22 +4,27 @@ const ProductsSchema = new Schema({
 
     ProductName:{
         type:String,
-        require:true,
+        required:true,
         unique:[true, "PLease add a product name"],
     },
 
     ProductDescription:{
         type:String,
-        require:true,
-        unique:[true, "PLease add a product description"],
+        required:true,
     },
-
     
     Price:{
         type:String,
         require:true,
-        unique:[true, "PLease add a product price"],
     },
+    Images:{
+    type:Array,
+    required:true
+    },
+
+    sale:{
+        type:String,
+    }
 
 });
 

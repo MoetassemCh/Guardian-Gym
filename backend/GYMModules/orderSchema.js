@@ -2,43 +2,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const productinfo = new mongoose.Schema({
-  productName: {
-    type: String,
-    required: true,
-  },
-  productPrice: {
-    type: Number,
-    required: true,
-  },
-});
-
-const cart = new mongoose.Schema({
-  productinfo: [productinfo],
-});
-
-const userinfo = new mongoose.Schema({
-  firstName: {
-    type: String,
-    required: true,
-  },
-  lastName: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  phoneNumber: {
-    type: String,
-    required: true,
-  },
-});
 
 const orderSchema = new Schema(
   {
@@ -51,6 +14,7 @@ const orderSchema = new Schema(
       type: objectid,
       required: true,
     },
+    
     cart: [cart],
 
     userinfo: [userinfo],
