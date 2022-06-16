@@ -62,7 +62,7 @@ const userinfo = new mongoose.Schema({
     max: 70,
   },
   phoneNumber: {
-    type: Number,
+    type: String,
     required: true,
     validate: [validatePhoneNumber, "Please fill a valid PhoneNumber"],
     match: [
@@ -70,35 +70,32 @@ const userinfo = new mongoose.Schema({
       "Please fill a valid PhoneNumber",
     ],
   },
-});
-
-const address = new mongoose.Schema({
-  country: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  city: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  state: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  street: {
-    type: String,
-    required: true,
-    trim: true,
+  address: {
+    country: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    city: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    state: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    street: {
+      type: String,
+      required: true,
+      trim: true,
+    },
   },
 });
 
 const usersSchema = new mongoose.Schema({
   userinfo: [userinfo],
-  address: [address],
-
   isAdmin: {
     type: Boolean,
     required: true,
