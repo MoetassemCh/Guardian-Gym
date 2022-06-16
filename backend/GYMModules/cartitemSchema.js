@@ -13,7 +13,9 @@ const cartItemSchema = new Schema({
     },
     discount: {
         type: Integer,
+
     },
+    
     price: {
         type: Double,
         required: true,
@@ -21,10 +23,8 @@ const cartItemSchema = new Schema({
     },
     cart_id: {type: mongoose.Schema.Types.ObjectId, ref:'cartSchema' },
     product_id: {type: mongoose.Schema.Types.ObjectId, ref:'products' },
-
-
 });
 // Create a model with the specific schema
-const cartItemModel = mongoose.model("cartItemModel", cartItemSchema);
+const cartItemModel = mongoose.model("cartItem", cartItemSchema);
 // export the created model
 module.exports = cartItemModel;

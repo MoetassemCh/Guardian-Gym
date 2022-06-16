@@ -104,6 +104,6 @@ const usersSchema = new mongoose.Schema({
 });
 
 // Create a model with the specific schema
-const usersModel = mongoose.model("usersModel", usersSchema);
+const usersModel = mongoose.model("users", usersSchema);
 // export the created model
 module.exports = usersModel;
