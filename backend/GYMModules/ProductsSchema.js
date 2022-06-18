@@ -1,33 +1,31 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const ProductsSchema = new Schema({
+  ProductName: {
+    type: String,
+    required: true,
+    unique: [true, "PLease add a product name"],
+  },
 
-    ProductName:{
-        type:String,
-        required:true,
-        unique:[true, "PLease add a product name"],
+  ProductDescription: {
+    type: String,
+    required: true,
+  },
 
-    },
+  Price: {
+    type: String,
+    require: true,
+  },
+  Images: {
+    data: Buffer,
+    contentType: String,
+  },
 
-    ProductDescription:{
-        type:String,
-        required:true,
-    },
-    
-    Price:{
-        type:String,
-        require:true,
-    },
-    Images:{
-    type:Blob,
-    required:true
-    },
-
-    sale:{
-        type:Boolean,
-
-    }
-
+  sale: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
 });
 
 // Create a model with the specific schema

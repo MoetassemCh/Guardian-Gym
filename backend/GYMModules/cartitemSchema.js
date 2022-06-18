@@ -5,19 +5,19 @@ const cartItemSchema = new Schema({
 
 
     quantity: {
-        type: Integer,
+        type: Number,
         required: true,
         default: 1,
         min:1
     
     },
     discount: {
-        type: Integer,
+        type: Number,
 
     },
     
     price: {
-        type: Double,
+        type: Number,
         required: true,
         min:1
     },
