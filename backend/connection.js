@@ -16,10 +16,10 @@ const uri = process.env.ATLAS_URI;
 mongoose
   .connect(uri, {
     // useNewUrlParser: true,
-    // // useCreateIndex: true,
     // useUnifiedTopology: true,
+    // // useCreateIndex: true
   })
-  .then(() => console.log("MongoDB connection established."))
+  .then((result) => console.log("MongoDB connection established."))
   .catch((error) => console.error("MongoDB connection failed:", error.message));
 
 app.listen(port, () => {

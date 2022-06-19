@@ -83,9 +83,11 @@ const product2 = new ProductsModel({
 });
 
 const drop_collection = async () => {
+
   await usersModel.collection.drop();
   await CategoryModel.collection.drop();
-  await ProductsModel.collection.drop();
+    await ProductsModel.collection.drop();
+  
 };
 
 drop_collection().then(() => {
@@ -111,7 +113,7 @@ drop_collection().then(() => {
     .save()
     .then((result) => {
       console.log("exercise1 Added!");
-    })
+    },1000)
     .catch((error) => {
       showErrors(error);
     });
@@ -120,7 +122,7 @@ drop_collection().then(() => {
     .save()
     .then((result) => {
       console.log("exercise2 Added!");
-    })
+    },1000)
     .catch((error) => {
       showErrors(error);
     });
@@ -129,7 +131,7 @@ product1
   .save()
   .then((result) => {
     console.log("product1 Added!");
-  })
+  },2000)
   .catch((error) => {
     showErrors(error);
   });
@@ -137,7 +139,7 @@ product1
     .save()
     .then((result) => {
       console.log("product2 Added!");
-    })
+    },3000)
     .catch((error) => {
       showErrors(error);
     });
