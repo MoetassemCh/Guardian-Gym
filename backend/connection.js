@@ -4,8 +4,9 @@ const mongoose = require("mongoose");
 const dbconnect = require("./test");
 // const dotenv = require("dotenv");
 const ProductRouter = require("./routes/ProductsRoute");
-const cartRouter=require('./routes/cartRoute')
-require("dotenv").config({path:".env"});
+const authRoute = require("./routes/authRoute");
+const carRouter = require("./routes/cartRoute");
+require("dotenv").config({ path: ".env" });
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -17,10 +18,10 @@ const uri = process.env.ATLAS_URI;
 mongoose
   .connect(uri, {
     // useNewUrlParser: true,
-    // // useCreateIndex: true,
     // useUnifiedTopology: true,
+    // // useCreateIndex: true
   })
-  .then(() => console.log("MongoDB connection established."))
+  .then((result) => console.log("MongoDB connection established."))
   .catch((error) => console.error("MongoDB connection failed:", error.message));
 
 app.listen(port, () => {
@@ -36,6 +37,8 @@ app.get("/home", (req, res) => {
 });
 
 app.use("/products", ProductRouter);
+app.use(authRoute);
+app.use("/cart", cartRouter);
 
 app.use("/cart",cartRouter)
 
