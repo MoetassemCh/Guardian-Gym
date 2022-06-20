@@ -40,6 +40,8 @@ app.use("/products", ProductRouter);
 app.use(authRoute);
 // app.use("/cart", cartRouter);
 
+app.use("/cart",cartRouter)
+
 app.all("*", (req, res) => {
   res.status(404).send("<h4>resource not found</h4>");
 });
