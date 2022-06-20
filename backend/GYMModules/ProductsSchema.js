@@ -1,31 +1,73 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+
+const reviewSchema = mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    rating: { type: Number, required: true },
+    comment: { type: String, required: true },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "users",
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
+
 const ProductsSchema = new Schema({
-  ProductName: {
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "User",
+  },
+  name: {
     type: String,
     required: true,
     unique: [true, "PLease add a product name"],
   },
 
-  ProductDescription: {
+
+  image: {
     type: String,
     required: true,
   },
-
-  Price: {
+  brand: {
     type: String,
-    require: true,
-  },
-  Images: {
-    data: Buffer,
-    contentType: String,
-  },
-
-  sale: {
-    type: Boolean,
     required: true,
-    default: false,
   },
+  category: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  reviews: [reviewSchema],
+  rating: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
+  numReviews: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
+  price: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
+  countInStock: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
+  // category{}
 });
 
 // Create a model with the specific schema

@@ -16,7 +16,10 @@ var validatePhoneNumber= function (phoneNumber) {
   return rePh.test(phoneNumber);
 };
 
-const userinfo = new mongoose.Schema({
+//hash//bcrypt
+
+const usersSchema = new mongoose.Schema({
+  userinfo:{
   firstName: {
     type: String,
     required: true,
@@ -70,6 +73,7 @@ const userinfo = new mongoose.Schema({
       "Please fill a valid PhoneNumber",
     ],
   },
+},
   address: {
     country: {
       type: String,
@@ -96,10 +100,6 @@ const userinfo = new mongoose.Schema({
       maxLength: 20,
     },
   },
-});
-
-const usersSchema = new mongoose.Schema({
-  userinfo: [userinfo],
   isAdmin: {
     type: Boolean,
     required: true,
