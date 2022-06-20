@@ -10,6 +10,9 @@ const cartSchema = new Schema({
         unique:[true, "PLease add a cart status"],
     }
 
+},
+{
+    timestamps:true,
 });
 // Create a model with the specific schema
 const cartModel = mongoose.model("cart", cartSchema);
