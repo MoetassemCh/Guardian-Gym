@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-//costs 
+//costs
 //total
 //subtotal
 //tax
