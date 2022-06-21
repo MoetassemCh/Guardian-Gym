@@ -29,7 +29,6 @@ const ProductsSchema = new Schema({
     unique: [true, "PLease add a product name"],
   },
 
-
   image: {
     type: String,
     required: true,
