@@ -5,7 +5,7 @@ const dbconnect = require("./test");
 // const dotenv = require("dotenv");
 const ProductRouter = require("./routes/ProductsRoute");
 const authRoute = require("./routes/authRoute");
-const cartRouter = require("./routes/cartRoute");
+
 require("dotenv").config({ path: ".env" });
 const app = express();
 const port = process.env.PORT || 5000;
@@ -38,9 +38,9 @@ app.get("/home", (req, res) => {
 
 app.use("/products", ProductRouter);
 app.use(authRoute);
-// app.use("/cart", cartRouter);
 
-app.use("/cart",cartRouter)
+
+
 
 app.all("*", (req, res) => {
   res.status(404).send("<h4>resource not found</h4>");
