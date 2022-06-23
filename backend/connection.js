@@ -2,10 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const dbconnect = require("./test");
-// const dotenv = require("dotenv");
+const userRoute = require("./routes/userRoute");
 const ProductRouter = require("./routes/ProductsRoute");
-const authRoute = require("./routes/authRoute");
-
 require("dotenv").config({ path: ".env" });
 const app = express();
 const port = process.env.PORT || 5000;
@@ -13,12 +11,17 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 
 app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 
 const uri = process.env.ATLAS_URI;
 mongoose
   .connect(uri, {
-    // useNewUrlParser: true,
-    // useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
     // // useCreateIndex: true
   })
   .then((result) => console.log("MongoDB connection established."))
@@ -37,10 +40,10 @@ app.get("/home", (req, res) => {
 });
 
 app.use("/products", ProductRouter);
-app.use(authRoute);
 
+// app.use(authRoute);
 
-
+app.use(userRoute);
 
 app.all("*", (req, res) => {
   res.status(404).send("<h4>resource not found</h4>");

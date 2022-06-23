@@ -25,23 +25,23 @@ const getProduct = async (req, res) => {
   }
 };
 
-// const addProduct = async (req, res) => {
-//   try {
-//     const product = req.body;
-//     const result = await ProductsModel.create(product);
+const addProduct = async(req, res) => {
+  try {
+    const product = req.body;
+    const result = await ProductsModel.create(product);
 
-//     if (result) {
-//       res.status(201).json({ message: "added product" });
-//     } else {
-//       res.status(409).json({ message: "failed to add product" });
-//     }
-//   } catch (error) {
-//     res.status(500).json({ message: "internal error" });
-//   }
-// };
+    if (result) {
+      res.status(201).json({ message: "added product" });
+    } else {
+      res.status(409).json({ message: "failed to add product" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "internal error" });
+  }
+};
 
 module.exports = {
   getProducts,
   getProduct,
-  // addProduct
+  addProduct
 };
