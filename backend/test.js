@@ -68,24 +68,13 @@ const exercise2 = new CategoryModel({
 });
 
 
-const product1 = new ProductsModel({
-  name: "mass",
-  brand: "nnjgfjgjfnas",
-  description: "fasdsa",
-  category: "adada",
-});
-const product2 = new ProductsModel({
-  name: "masadajjs",
-  brand: "df",
-  description: "fasdsa",
-  category: "adada",
-});
+
+
 
 const drop_collection = async () => {
 
   // await usersModel.collection.drop();
   await CategoryModel.collection.drop();
-    await ProductsModel.collection.drop();
   
 };
 
@@ -126,22 +115,7 @@ drop_collection().then(() => {
       showErrors(error);
     });
 
-product1
-  .save()
-  .then((result) => {
-    console.log("product1 Added!");
-  },2000)
-  .catch((error) => {
-    showErrors(error);
-  });
-  product2
-    .save()
-    .then((result) => {
-      console.log("product2 Added!");
-    },3000)
-    .catch((error) => {
-      showErrors(error);
-    });
+
 
 
 });
