@@ -1,8 +1,18 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+<<<<<<< Updated upstream
 const dotenv = require("dotenv");
 dotenv.config();
+=======
+const dbconnect = require("./test");
+// const dotenv = require("dotenv");
+const ProductRouter = require("./routes/ProductsRoute");
+const authRoute = require("./routes/authRoute");
+const adminCategoriesRoute = require('./routes/adminCategoriesRoute');
+
+require("dotenv").config({ path: ".env" });
+>>>>>>> Stashed changes
 const app = express();
 const port = process.env.PORT || 5000;
 
