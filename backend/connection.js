@@ -10,6 +10,7 @@ const dbconnect = require("./test");
 const ProductRouter = require("./routes/ProductsRoute");
 const authRoute = require("./routes/authRoute");
 const adminCategoriesRoute = require('./routes/adminCategoriesRoute');
+const UserCategoriesRoute = require('./routes/userCategoriesRoute');
 
 require("dotenv").config({ path: ".env" });
 >>>>>>> Stashed changes
