@@ -4,6 +4,7 @@ const {
 
 } = require("../controllers/ProductController");
 const auth = require("../middleware/authJwt");
+const admin = require("../middleware/admin");
 const Router = require("express").Router();
 const ProductsModel = require("../GYMModules/ProductsSchema");
 const ProductRouter = Router;
@@ -13,7 +14,7 @@ ProductRouter.get("/", getProducts);
 ProductRouter.get("/:id", getProduct);
 
 
-ProductRouter.post("/add",auth, async(req,res)=>{
+ProductRouter.post("/add",[auth,admin], async(req,res)=>{
 const product = new ProductsModel({
   name: req.body.name,
   brand: req.body.brand,

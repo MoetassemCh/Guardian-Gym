@@ -3,6 +3,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const jwt = require("jsonwebtoken");
 
+
+
+
+
+
 const validateEmail = function (email) {
   var re = /^([a-zA-Z0-9_\-?\.?]){3,}@([a-zA-Z]){3,}\.([a-zA-Z]){2,5}$/;
   return re.test(email);
@@ -13,12 +18,15 @@ var validatePhoneNumber = function (phoneNumber) {
   return rePh.test(phoneNumber);
 };
 
-//hash//bcrypt
+
 
 const usersSchema = new mongoose.Schema({
+  googleId:{
+    type:String
+  },
   firstName: {
     type: String,
-    required: true,
+    // required: true,
     match: /[a-z]/,
     trim: true,
     maxlength: 20,
@@ -32,7 +40,7 @@ const usersSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: "Email address is required",
+    // required: "Email address is required",
     unique: [true, "email already exists in database!"],
     lowercase: true,
     trim: true,
@@ -44,7 +52,7 @@ const usersSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: "true",
+    // required: "true",
   },
   gender: {
     type: String,
@@ -98,15 +106,21 @@ const usersSchema = new mongoose.Schema({
   // },
   isAdmin: {
     type: Boolean,
-    required: true,
     default: false,
   },
 });
 
-usersSchema.methods.generateTokens = function () {
-  const token = jwt.sign({ _id: this._id }, "privateKey");
-  return token;
-};
+// usersSchema.methods.generateTokens = function () {
+//   const token = jwt.sign(
+//     { _id: this._id, isAdmin: this.isAdmin },
+//     "privateKey",
+//     {
+//       expiresIn: 5,
+//     }
+//   );
+//   return token;
+// };
+
 // Create a model with the specific schema
 const usersModel = mongoose.model("users", usersSchema);
 // export the created model
