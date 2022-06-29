@@ -16,7 +16,9 @@ var validatePhoneNumber= function (phoneNumber) {
   return rePh.test(phoneNumber);
 };
 
-const userinfo = new mongoose.Schema({
+
+  
+const usersSchema = new mongoose.Schema({
   firstName: {
     type: String,
     required: true,
@@ -96,17 +98,13 @@ const userinfo = new mongoose.Schema({
       maxLength: 20,
     },
   },
-});
 
-const usersSchema = new mongoose.Schema({
-  userinfo: [userinfo],
   isAdmin: {
     type: Boolean,
     required: true,
     default: false,
   },
 });
-
 // Create a model with the specific schema
 const usersModel = mongoose.model("users", usersSchema);
 // export the created model
