@@ -3,17 +3,23 @@ const User = require("../GYMModules/usersSchema");
 const authco=require("../controllers/authController")
 
 module.exports=function (req,res,next){
-    const token =req.header('x-auth-token');
-    if(!token)
-    return res.status(401).send('access rejected..')
-try{
-const decodeToken=jwt.verify(token,'privateKey')
-req.user=decodeToken
-next()
-}catch(e){
-  res.status(400).send('wrong token..')
-}
-}
+const token = req.cookies.jwt;
+  if(token){
+ jwt.verify(token, "privateKey", (err, decodeToken)=>{
+  if (err) {
+  console.log(err.message);
+ res.redirect("/auth/login");
+  } else{ 
+       req.user = decodeToken;
+      next();
+      }
+    });
+
+  } else {
+     res.status(401).send("access rejected..");
+      // res.redirect("/auth/login");
+  }
+};
 
 
 

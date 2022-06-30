@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const dbconnect = require("./test");
+// const dbconnect = require("./test");
 const userRoute = require("./routes/userRoute");
 const ProductRouter = require("./routes/ProductsRoute");
 const ProfileRouter = require("./routes/ProfileRoute");
@@ -22,7 +22,7 @@ app.use(
 );
 app.use(cookieParser());
 
-app.set("view engine", "ejs");
+
 const uri = process.env.ATLAS_URI;
 mongoose
   .connect(uri, {

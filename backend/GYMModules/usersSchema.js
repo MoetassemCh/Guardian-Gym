@@ -1,28 +1,25 @@
 // models/Person.js
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const jwt = require("jsonwebtoken");
-
-
-
-
-
 
 const validateEmail = function (email) {
-  var re = /^([a-zA-Z0-9_\-?\.?]){3,}@([a-zA-Z]){3,}\.([a-zA-Z]){2,5}$/;
+  let re = /^([a-zA-Z0-9_\-?\.?]){3,}@([a-zA-Z]){3,}\.([a-zA-Z]){2,5}$/;
   return re.test(email);
 };
-
-var validatePhoneNumber = function (phoneNumber) {
-  var rePh = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+const validatePassword = function (password) {
+  let reP = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})(?=.*[!@#$%^&*])/;
+  return reP.test(password);
+};
+const validatePhoneNumber = function (phoneNumber) {
+  let rePh = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
   return rePh.test(phoneNumber);
 };
 
 
 
 const usersSchema = new mongoose.Schema({
-  googleId:{
-    type:String
+  googleId: {
+    type: String,
   },
   firstName: {
     type: String,
@@ -52,7 +49,13 @@ const usersSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    // required: "true",
+    required: "Password is required",
+    trim: true,
+    validate: [validatePassword, "Please fill a valid password"],
+    match: [
+      /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})(?=.*[!@#$%^&*])/,
+      "Please fill a valid password",
+    ],
   },
   gender: {
     type: String,
@@ -99,27 +102,14 @@ const usersSchema = new mongoose.Schema({
       maxLength: 20,
     },
   },
-  // role: {
-  //   type: String,
-  //   enum: ["normal", "admin"],
-  //   required: [true, "Please specify user role"],
-  // },
+
   isAdmin: {
     type: Boolean,
     default: false,
   },
 });
 
-// usersSchema.methods.generateTokens = function () {
-//   const token = jwt.sign(
-//     { _id: this._id, isAdmin: this.isAdmin },
-//     "privateKey",
-//     {
-//       expiresIn: 5,
-//     }
-//   );
-//   return token;
-// };
+
 
 // Create a model with the specific schema
 const usersModel = mongoose.model("users", usersSchema);
