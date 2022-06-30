@@ -25,7 +25,8 @@ const getProduct = async (req, res) => {
   }
 };
 
-// const addProduct = async (req, res) => {
+
+// const addProduct = async(req, res) => {
 //   try {
 //     const product = req.body;
 //     const result = await ProductsModel.create(product);
