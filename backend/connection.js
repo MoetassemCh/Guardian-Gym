@@ -1,12 +1,14 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const dbconnect = require("./test");
-// const dotenv = require("dotenv");
-const ProductRouter = require("./routes/ProductsRoute");
+// const dbconnect = require("./test");
+const dotenv = require("dotenv");
+const ProductRouter = require("./routes/ProductRoute2");
+const OrderRouter = require("./routes/OrderRoute2");
 const authRoute = require("./routes/authRoute");
 
-require("dotenv").config({ path: ".env" });
+require('dotenv').config({ path: '.env' });
+
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -37,6 +39,7 @@ app.get("/home", (req, res) => {
 });
 
 app.use("/products", ProductRouter);
+app.use("/orders", OrderRouter);
 app.use(authRoute);
 
 
