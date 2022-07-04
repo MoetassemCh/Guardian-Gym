@@ -3,9 +3,14 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 // const dbconnect = require("./test");
 const userRoute = require("./routes/userRoute");
+const ExerciseCategory=require("./routes/CategoriesRoute")
 const ProductRouter = require("./routes/ProductsRoute");
 const ProfileRouter = require("./routes/ProfileRoute");
-
+const OrderRouter = require("./routes/orderRoute");
+const AdminProfile = require("./routes/admin/AProfile");
+const AdminProduct=require("./routes/admin/AProducts")
+const OrderAdmin = require("./routes/admin/Aorder");
+const morgan=require("morgan")
 const cookieParser = require("cookie-parser");
 require("dotenv").config({ path: ".env" });
 const app = express();
@@ -14,6 +19,8 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 
 app.use(express.json());
+
+
 
 app.use(
   express.urlencoded({
@@ -30,12 +37,15 @@ mongoose
     useUnifiedTopology: true,
     // // useCreateIndex: true
   })
-  .then((result) => console.log("MongoDB connection established."))
-  .catch((error) => console.error("MongoDB connection failed:", error.message));
-
-app.listen(port, () => {
+  .then(() => {
+  console.log("MongoDB connection established.")
+  app.listen(port, () => {
   console.log(`Server is runing on port:${port}`);
+  })
+}).catch((error) =>{ console.error("MongoDB connection failed:", error.message)
 });
+
+
 
 
 
@@ -47,12 +57,26 @@ app.get("/home", (req, res) => {
   res.render('home')
 });
 
-app.use("/products", ProductRouter);
+app.use("/ExerciseCategory", ExerciseCategory);
+
+app.use("/auth", userRoute);
 
 
 app.use("/profile", ProfileRouter);
 
-app.use('/auth',userRoute);
+app.use("/products", ProductRouter);
+
+app.use("/orders", OrderRouter);
+
+
+app.use("/dashboard/profile", AdminProfile);
+
+app.use("/dashboard/product", AdminProduct);
+
+app.use("/dashboard/orders", OrderAdmin);
+
+
+
 
 app.all("*", (req, res,next) => {
   res.status(404).send("<h4>resource not found</h4>");

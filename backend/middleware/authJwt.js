@@ -11,7 +11,7 @@ const token = req.cookies.jwt;
  res.redirect("/auth/login");
   } else{ 
        req.user = decodeToken;
-      next();
+next();
       }
     });
 

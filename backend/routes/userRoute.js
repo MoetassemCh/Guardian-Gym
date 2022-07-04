@@ -6,14 +6,12 @@ router = express.Router(),
     signin,logout } 
   = require("../controllers/authController");
 
-const auth = require("../middleware/authJwt");
+
 router.get("/register", signup_get, function (req, res) {});
 router.post("/register", signup, function (req, res) {});
 router.get("/login", signin_get, function (req, res) {});
 router.post("/login", signin, function (req, res) {});
-router.get("/logout",logout, function (req, res) {
-
-});
+router.get("/logout",logout, function (req, res) {});
 
 // router.get(
 //   "/google",

@@ -1,23 +1,31 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const User = require("../GYMModules/usersSchema");
+const asyncHandler =require("express-async-handler")
 const cookie=require("cookie-parser")
-
 exports.signup_get = (req, res) => {
   res.redirect("/");
 };
 
-exports.signup = async (req, res) => {
+exports.signup = asyncHandler(async (req, res) => {
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
-  const user = new User({
-    firstName: req.body.firstName,
-    email: req.body.email,
-    password: hashedPassword,
-    isAdmin: req.body.isAdmin,
-  });
+  const { name, email, password } = req.body;
 
+
+  const userExists = await User.findOne({email });
+ if (userExists) {
+   res.status(400);
+   throw new Error("User already exists");
+ }
+ 
+   const user = new User({
+     name: req.body.name,
+     email: req.body.email,
+     password: hashedPassword,
+     isAdmin: req.body.isAdmin,
+   });
   await user.save((err, user) => {
 
     if (err) {
@@ -39,11 +47,12 @@ exports.signup = async (req, res) => {
       });
     }
   });
-};
+});
 
 const maxAge = 3 * 24 * 60 * 60;
 
 exports.signin_get = (req, res) => {
+  
   res.redirect("/profile");
 };
 

@@ -1,6 +1,7 @@
 // models/Person.js
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const bcrypt=require("bcrypt")
 
 const validateEmail = function (email) {
   let re = /^([a-zA-Z0-9_\-?\.?]){3,}@([a-zA-Z]){3,}\.([a-zA-Z]){2,5}$/;
@@ -18,12 +19,12 @@ const validatePhoneNumber = function (phoneNumber) {
 
 
 const usersSchema = new mongoose.Schema({
-  googleId: {
+  // googleId: {
+  //   type: String,
+  // },
+  name: {
     type: String,
-  },
-  firstName: {
-    type: String,
-    // required: true,
+    required: true,
     match: /[a-z]/,
     trim: true,
     maxlength: 20,
@@ -112,6 +113,6 @@ const usersSchema = new mongoose.Schema({
 
 
 // Create a model with the specific schema
-const usersModel = mongoose.model("users", usersSchema);
+const User = mongoose.model("User", usersSchema);
 // export the created model
-module.exports = usersModel;
+module.exports = User ;
