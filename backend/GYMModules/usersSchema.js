@@ -49,8 +49,15 @@ const usersSchema = new mongoose.Schema({
     //   "Please fill a valid password",
     // ],
   },
+  pic: {
+    type: String,
+    required: true,
+    default:
+      "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
+  },
   gender: {
-    type: String, possibleValues: ['male','female']
+    type: String,
+    possibleValues: ["male", "female"],
   },
   Age: {
     type: Number,
@@ -62,31 +69,29 @@ const usersSchema = new mongoose.Schema({
     // required: true,
   },
 
+  country: {
+    type: String,
+    // required: true,
+  },
+  city: {
+    type: String,
+    // required: true,
+    trim: true,
+    maxLength: 20,
+  },
+  state: {
+    type: String,
+    // required: true,
+    trim: true,
+    maxLength: 20,
+  },
+  street: {
+    type: String,
+    // required: true,
+    trim: true,
+    maxLength: 20,
+  },
 
-    country: {
-      type: String,
-      // required: true,
-
-    },
-    city: {
-      type: String,
-      // required: true,
-      trim: true,
-      maxLength: 20,
-    },
-    state: {
-      type: String,
-      // required: true,
-      trim: true,
-      maxLength: 20,
-    },
-    street: {
-      type: String,
-      // required: true,
-      trim: true,
-      maxLength: 20,
-    },
-  
   isAdmin: {
     type: Boolean,
     default: false,

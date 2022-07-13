@@ -4,6 +4,7 @@ import Home from "./pages/Home/Home";
 import About from "./pages/About/About"
 import Login from "./pages/Login/Login";
 import RegisterScreen from "./pages/Register/Register";
+import ProfileScreen from "./pages/Profile/Profile";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<RegisterScreen />} />
               <Route path="/about" element={<About />} />
+              <Route path="/profile" element={<ProfileScreen />} />
             </Routes>
           </div>
         </div>

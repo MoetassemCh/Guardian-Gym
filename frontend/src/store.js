@@ -2,6 +2,7 @@
 import {
   userLoginReducer,
   userRegisterReducer,
+  userUpdateReducer,
 } from "../src/Reducers/userReducers";
 import { productReducer } from "./Reducers/ProductReducers";
 import { createStore, combineReducers, applyMiddleware } from "redux";
@@ -12,7 +13,8 @@ import { composeWithDevTools } from "redux-devtools-extension";
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
-  product:productReducer
+  product: productReducer,
+  userProfile: userUpdateReducer,
 });
 
 
