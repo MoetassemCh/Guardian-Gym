@@ -442,23 +442,54 @@ background: -webkit-gradient(linear, left top, right top, from(#eb3c5a), to(#f67
 
 
 
+/* login */
+
+
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.login-button{
+	padding-left: 2.5rem;
+ padding-right: 2.5rem
+}
+
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
+
+
+
+
+/* login */
 
 
 
 
 
+.img-fluidR{
+	border-top-left-radius: .25rem;
+ border-bottom-left-radius: .25rem;
+}
 
-
-
-
-
-
-
-
-
-
-
-
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+font-size: 1rem;
+line-height: 2.15;
+padding-left: .75em;
+padding-right: .75em;
+}
+.card-registration .select-arrow {
+top: 13px;
+}
 
 
 /*---------------------

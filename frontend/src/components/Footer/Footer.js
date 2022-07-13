@@ -8,7 +8,7 @@ import footer from "../../img/Home/footer-signup.jpg";
 const Footer = () => {
     
     return (
-      <footer class="footer-section">
+      <footer className="footer-section">
         <Container>
           <Row>
             <Col md={4}>
@@ -43,7 +43,7 @@ const Footer = () => {
             <form action="#" className="subscribe-form">
               <input type="text" placeholder="Enter Your Mail" />
               <button type="submit">
-                <i class="fa fa-send"></i>
+                <i className="fa fa-send"></i>
               </button>
             </form>
           </div>
@@ -56,19 +56,17 @@ const Footer = () => {
                 <Link to="#">Privacy Policy</Link>
               </li>
             </ul>
-            <p>
               <p>
                 &copy; Link back to Colorlib can't be removed. Template is
                 licensed under CC BY 3.0. Copyright &copy; All rights reserved |
                 This template is made with{" "}
-                <i class="fa fa-heart" aria-hidden="true"></i> by{" "}
+                <i className="fa fa-heart"></i>by
                 <Link to="/" target="_blank">
                   Guardian
                 </Link>
                 Link back to Colorlib can't be removed. Template is licensed
                 under CC BY 3.0.
               </p>
-            </p>
             <div className="footer-social">
               <Link to="/">
                 <i className="bi bi-facebook"></i>

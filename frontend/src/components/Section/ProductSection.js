@@ -9,7 +9,7 @@ import Protein3 from "../../img/Home/protein3.jpg";
 
 const ProductSection = () => {
   return (
-    <div class="gallery-area section-padding30">
+    <div className="gallery-area section-padding30">
       <Container fluid>
         <Row>
           <Col lg={12}>
@@ -20,18 +20,18 @@ const ProductSection = () => {
         </Row>
         <Row className="g-4">
           <Col lg={4} md={6} sm={4}>
-            <div class="box snake mb-30">
+            <div className="box snake mb-30">
               <div
-                class="gallery-img big-img"
+                className="gallery-img big-img"
                 style={{
                   backgroundImage: `url(${Protein1})`,
                 }}
               ></div>
-              <div class="overlay">
-                <div class="overlay-content">
+              <div className="overlay">
+                <div className="overlay-content">
                   <h3>Muscle gaining </h3>
                   <Link to="/product">
-                    <i class="bi bi-plus"></i>
+                    <i className="bi bi-plus"></i>
                   </Link>
                 </div>
               </div>

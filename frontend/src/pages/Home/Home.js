@@ -23,14 +23,14 @@ const Home = () => {
           <Container>
             <Row>
               <Col lg={8}>
-                <div class="hero-text">
+                <div className="hero-text">
                   <span>FITNESS ELEMENTS</span>
                   <h1>BMI CALCULATOR</h1>
                   <p>
                     Gutim comes packed with the user-friendly BMI Calculator
                     <br /> shortcode which lets
                   </p>
-                  <Link to="/" className="primary-btn">
+                  <Link to="/bmi" className="primary-btn">
                     Read More
                   </Link>
                 </div>

@@ -2,7 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 // const dbconnect = require("./test");
-const userRoute = require("./routes/userRoute");
+// const userRoute = require("./routes/userRoute");
+const userRoute2 = require("./routes/userRoute2");
 const ExerciseCategory=require("./routes/CategoriesRoute")
 const ProductRouter = require("./routes/ProductsRoute");
 const ProfileRouter = require("./routes/ProfileRoute");
@@ -27,6 +28,8 @@ app.use(
     extended: true,
   })
 );
+
+
 app.use(cookieParser());
 
 
@@ -59,8 +62,9 @@ app.get("/home", (req, res) => {
 
 app.use("/ExerciseCategory", ExerciseCategory);
 
-app.use("/auth", userRoute);
+// app.use("/api", userRoute);
 
+app.use("/api/users", userRoute2);
 
 app.use("/profile", ProfileRouter);
 
