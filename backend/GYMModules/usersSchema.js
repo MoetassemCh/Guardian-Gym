@@ -51,10 +51,10 @@ const usersSchema = new mongoose.Schema({
   },
   pic: {
     type: String,
-    required: true,
-    default:
-      "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
+    // required: true,
+    // default:"https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
   },
+
   gender: {
     type: String,
     possibleValues: ["male", "female"],
@@ -65,12 +65,12 @@ const usersSchema = new mongoose.Schema({
     max: 70,
   },
   phoneNumber: {
-    type: Number,
+    type: String,
     // required: true,
   },
 
   country: {
-    type: String,
+    type: Object,
     // required: true,
   },
   city: {

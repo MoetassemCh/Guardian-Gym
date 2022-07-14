@@ -18,6 +18,7 @@ exports.signin = async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      pic:user.pic,
       isAdmin: user.isAdmin,
       token: generateToken(user._id),
     });
@@ -88,10 +89,55 @@ if (user) {
     name: user.name,
     email: user.email,
     isAdmin: user.isAdmin,
+    Age: user.Age,
+    phoneNumber: user.phoneNumber,
+    country: user.country,
+    city: user.city,
+    street: user.street,
+    pic:user.pic
   });
 } else {
    res.status(404).send({
      message: "User not found",
    });
 }
+});
+
+
+exports.Updateprofile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+    user.Age = req.body.Age || user.Age;
+    user.phoneNumber = req.body.phoneNumber || user.phoneNumber;
+    user.country = req.body.country || user.country;
+    user.city = req.body.city || user.city;
+    user.street = req.body.street || user.street;
+    user.pic = req.body.pic || user.pic;
+
+    if (req.body.password) {
+      user.password = req.body.password;
+    }
+
+    const updatedUser = await user.save();
+
+    res.json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      Age: updatedUser.Age,
+      phoneNumber: updatedUser.phoneNumber,
+      country: updatedUser.country,
+      city: updatedUser.city,
+      street: updatedUser.street,
+      pic: updatedUser.pic,
+      isAdmin: updatedUser.isAdmin,
+      token: generateToken(updatedUser._id),
+    });
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
 });

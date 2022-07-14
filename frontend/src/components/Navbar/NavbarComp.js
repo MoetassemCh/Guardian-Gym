@@ -8,6 +8,7 @@ import {useDispatch,useSelector} from "react-redux"
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { LinkContainer } from 'react-router-bootstrap' ;
 import {logout} from '../../actions/userActions'
+import { Image } from 'react-bootstrap';
 
 function NavbarComp () {
 const dispatch=useDispatch()
@@ -42,15 +43,27 @@ const dispatch=useDispatch()
                 Product
               </Nav.Link>
               {userInfo ? (
-                <NavDropdown title={userInfo.name} id='name' className='text-black'>
-              
-              <LinkContainer to='/profile'>
-                <NavDropdown.Item>Profile</NavDropdown.Item>
-              </LinkContainer>
-              <NavDropdown.Item onClick={logoutHandler}>
-              Logout
-              </NavDropdown.Item>
-                </NavDropdown>
+                <>
+                  <Image
+                    src={userInfo.pic}
+                    width="50"
+                    height="50"
+                    className="d-inline-block align-top img-fluid rounded-circle"
+                    alt=""
+                  />
+                  <NavDropdown
+                    title={userInfo.name}
+                    id="name"
+                    className="text-black"
+                  >
+                    <LinkContainer to="/profile">
+                      <NavDropdown.Item>Profile</NavDropdown.Item>
+                    </LinkContainer>
+                    <NavDropdown.Item onClick={logoutHandler}>
+                      Logout
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                </>
               ) : (
                 <Nav.Link className="signupbtn" as={Link} to="/login">
                   Login

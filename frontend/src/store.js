@@ -2,7 +2,8 @@
 import {
   userLoginReducer,
   userRegisterReducer,
-  userUpdateReducer,
+  userDetailsReducer,
+  userUpdateProfileReducer,
 } from "../src/Reducers/userReducers";
 import { productReducer } from "./Reducers/ProductReducers";
 import { createStore, combineReducers, applyMiddleware } from "redux";
@@ -13,8 +14,9 @@ import { composeWithDevTools } from "redux-devtools-extension";
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
+  userDetails: userDetailsReducer,
+  userUpdateProfile: userUpdateProfileReducer,
   product: productReducer,
-  userProfile: userUpdateReducer,
 });
 
 
@@ -24,6 +26,8 @@ const userInfoFromStoarge=localStorage.getItem('userInfo')
 
 const initialState = {
   userLogin: { userInfo: userInfoFromStoarge },
+    userUpdateProfile: userUpdateProfileReducer,
+
 };
 
 const middleware = [thunk];

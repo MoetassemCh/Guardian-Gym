@@ -29,18 +29,18 @@ const RegisterScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [gender, setgender] = useState("");
+  const [country, setcountry] = useState("");
   const [Age, setAge] = useState("");
-  const [phoneNumber, setPhone] = useState("");
-  const [country, setNation] = useState("");
   const [city, setcity] = useState("");
   const [street, setstreet] = useState("");
+  const [phoneNumber, setphoneNumber] = useState("");
 
 
 
      const options = useMemo(() => countryList().getData(), []);
 
      const changeHandler = (country) => {
-       setNation(country);
+       setcountry(country);
      };
      
   const Navigate = useNavigate();
@@ -176,7 +176,7 @@ const RegisterScreen = () => {
                               defaultCountry="LB"
                               placeholder="Enter phone number"
                               value={phoneNumber}
-                              onChange={setPhone}
+                              onChange={setphoneNumber}
                             />
                           </Form.Group>
                         </Row>
