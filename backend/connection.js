@@ -6,7 +6,9 @@ const mongoose = require("mongoose");
 const userRoute2 = require("./routes/userRoute2");
 const ExerciseCategory=require("./routes/CategoriesRoute")
 const ProductRouter = require("./routes/ProductsRoute");
-const ProfileRouter = require("./routes/ProfileRoute");
+const UploadRoute = require("./routes/uploadImg");
+const path=require("path")
+// const ProfileRouter = require("./routes/ProfileRoute");
 const OrderRouter = require("./routes/orderRoute");
 const AdminProfile = require("./routes/admin/AProfile");
 const AdminProduct=require("./routes/admin/AProducts")
@@ -65,8 +67,10 @@ app.use("/ExerciseCategory", ExerciseCategory);
 // app.use("/api", userRoute);
 
 app.use("/api/users", userRoute2);
+app.use("/api/upload", UploadRoute);
+app.use('/Upload',express.static(path.join(__dirname,'/Upload')))
 
-app.use("/profile", ProfileRouter);
+// app.use("/profile", ProfileRouter);
 
 app.use("/products", ProductRouter);
 
@@ -78,7 +82,6 @@ app.use("/dashboard/profile", AdminProfile);
 app.use("/dashboard/product", AdminProduct);
 
 app.use("/dashboard/orders", OrderAdmin);
-
 
 
 

@@ -4,12 +4,7 @@ const auth = require("../middleware/authJwt");
 
 (router = express.Router()),
   // verifyToken = require("../middleware/authJwt"),
-  ({
-    signin,
-    signup,
-    profile
- 
-  } = require("../controllers/authController2"));
+  ({ signin, signup, profile,Updateprofile } = require("../controllers/authController2"));
 
 // router.route("/").post(signup).get(getUsers);
 
@@ -17,15 +12,12 @@ router.post("/login", signin, function (req, res) {});
 
 router.post("/register", signup, function (req, res) {});
 
-router.get("/profile", auth, profile);
-
-
 // router.get("/logout", logout, function (req, res) {});
 
+router.route("/profile").get(auth, profile).put(auth, Updateprofile);
 
 
-
-
+module.exports = router;
 // router.get(
 //   "/google",
 //   passport.authenticate("google", {
@@ -36,4 +28,4 @@ router.get("/profile", auth, profile);
 //   res.redirect('/profile');
 // });
 
-module.exports = router;
+
