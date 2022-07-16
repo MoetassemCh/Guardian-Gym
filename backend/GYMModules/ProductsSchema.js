@@ -24,12 +24,12 @@ const reviewSchema = mongoose.Schema(
 const ProductsSchema = new Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
+    // required: true,
     ref: "User",
   },
   name: {
     type: String,
-    required: true,
+    // required: true,
     // unique: [true, "PLease add a product name"],
   },
 
@@ -39,35 +39,35 @@ const ProductsSchema = new Schema({
   },
   brand: {
     type: String,
-    required: true,
+    // required: true,
   },
   category: {
     type: String,
-    required: true,
+    // required: true,
   },
   description: {
     type: String,
-    required: true,
+    // required: true,
   },
   reviews: [reviewSchema],
   rating: {
     type: Number,
-    required: true,
+    // required: true,
     default: 0,
   },
   numReviews: {
     type: Number,
-    required: true,
+    // required: true,
     default: 0,
   },
   price: {
     type: Number,
-    required: true,
+    // required: true,
     default: 0,
   },
   countInStock: {
     type: Number,
-    required: true,
+    // required: true,
     default: 0,
   },
   // category{}

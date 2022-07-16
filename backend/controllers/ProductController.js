@@ -4,22 +4,24 @@ const asyncHandler =require("express-async-handler")
 
 
 const getProducts = asyncHandler(async (req, res) => {
-  
-  const pageSize=10;
-  const page = Number(req.query.pageNumber) || 1;
-  const keyword = req.query.keyword
-    ? {
-        name: {
-          $regex: req.query.keyword,
-          $options: "i",
-        },
-      }
-    : {};
-const count = await ProductsModel.countDocuments({ ...keyword });
-  const products = await ProductsModel.find({ ...keyword })
-    .limit(pageSize)
-    .skip(pageSize * (page - 1));
-  res.json({ products, page, pages: Math.ceil(count / pageSize) });
+    const products = await ProductsModel.find()
+    .then((products) => res.json(products))
+    .catch((err) => res.status(400).json("Error" + err));
+//   const pageSize=10;
+//   const page = Number(req.query.pageNumber) || 1;
+//   const keyword = req.query.keyword
+//     ? {
+//         name: {
+//           $regex: req.query.keyword,
+//           $options: "i",
+//         },
+//       }
+//     : {};
+// const count = await ProductsModel.countDocuments({ ...keyword });
+//   const products = await ProductsModel.find({ ...keyword })
+//     .limit(pageSize)
+//     .skip(pageSize * (page - 1));
+//   res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
 
 const getProduct = asyncHandler(async (req, res) => {
