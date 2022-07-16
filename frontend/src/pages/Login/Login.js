@@ -35,7 +35,11 @@ const Login = () => {
     if (userInfo) {
      Navigate(redirect);
     }
- 
+    // if (userInfo && userInfo.isAdmin) {
+    //   Navigate(redirect);
+    // } else if (userInfo && !userInfo.isAdmin) {
+    //   Navigate("/about");
+    // }
   }, [Navigate,userInfo,redirect]);
 
 

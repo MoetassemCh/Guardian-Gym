@@ -39,37 +39,16 @@ const [picMessage, setPicMessage] = useState();
    };
 
 
-  // const uploadFileHandler = async (e) => {
-  //   const file = e.target.files[0];
-  //   const formData = new FormData();
-  //   formData.append("file", file);
-  //   setupload(true);
 
-  //   try {
-  //     const config = {
-  //       headers: {
-  //         "Content-Type": "multipart/form-data",
-  //       },
-  //     };
-
-  //     const { data } = await axios.post("/api/upload", formData, config);
-
-  //     setPic(data);
-  //     setupload(false);
-  //   } catch (error) {
-  //     console.error(error);
-  //     setupload(false);
-  //   }
-  // };
 
 const postDetails = (pics) => {
   setPicMessage(null);
   if (pics.type === "image/jpeg" || pics.type === "image/png") {
     const data = new FormData();
     data.append("file", pics);
-    data.append("upload_preset", "notezipper");
-    data.append("cloud_name", "piyushproj");
-    fetch("https://api.cloudinary.com/v1_1/piyushproj/image/upload", {
+    data.append("upload_preset", "ummmrnoi");
+    data.append("cloud_name", "dekceipha");
+    fetch("https://api.cloudinary.com/v1_1/dekceipha/image/upload", {
       method: "post",
       body: data,
     })
@@ -119,6 +98,7 @@ setcity(user.city);
 setstreet(user.street);
 setphoneNumber(user.phoneNumber);
 setPic(user.pic);
+
     }
     }
   },[dispatch,Navigate, userInfo,user]);
@@ -243,7 +223,7 @@ setPic(user.pic);
                       <Form.Label>country</Form.Label>
                       <Select
                         options={options}
-                        value={country}
+                        value={country.label}
                         onChange={changeHandler}
                       ></Select>
                     </Form.Group>

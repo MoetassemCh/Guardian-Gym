@@ -39,7 +39,7 @@ const dispatch=useDispatch()
               <Nav.Link className="text-black" as={Link} to="/exercises">
                 Exercises
               </Nav.Link>
-              <Nav.Link className="text-black" as={Link} to="/product">
+              <Nav.Link className="text-black" as={Link} to="/products">
                 Product
               </Nav.Link>
               {userInfo ? (
