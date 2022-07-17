@@ -3,12 +3,13 @@ import SingleProduct from "../../components/Product/SingleProduct";
 import Filters from "../../components/Product/Filters";
 import './styles.css'
 
-const ProductHome = () => {
+const ProductHome = (event) => {
 
-  const {
-    state: {products},
-    productState:{sort, byStock, searchQuery}
-}= CartState();//use the products from the state
+  const {state: {products},productState:{sort, byStock, searchQuery}} = event.target.CartState();
+
+    this.setState({
+      [state]:productState
+    });
 
  const transformProducts=()=>{
   let sortedProducts=products;
