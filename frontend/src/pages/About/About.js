@@ -4,10 +4,15 @@ import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import AboutPic from "../../img/Home/about-pic.jpg";
-
+import Vd1 from "../../img/About/Gym4.mp4";
+import Vd2 from "../../img/About/Gym2.mp4";
+import Vd3 from "../../img/About/Gym.mp4";
+import "./About.css";
+import HoverVideoPlayer from "react-hover-video-player";
 // import * as Icon from "react-bootstrap-icons";
 
 const About = () => {
+  
   return (
     <>
       <section>
@@ -35,6 +40,7 @@ const About = () => {
           </Container>
         </div>
       </section>
+
       <section className="about-section1 spad">
         <Container>
           <Row>
@@ -65,8 +71,44 @@ const About = () => {
               </div>
             </Col>
           </Row>
-        </Container>
-      </section>
+          </Container>
+          </section>
+          
+          <section>
+            <div className="video">
+            <Container>
+            <Row>
+            
+            <Col >
+            <HoverVideoPlayer 
+               videoSrc={[
+                  { src: Vd1 , type: 'video/mp4' },
+               ]}
+            />
+            </Col>
+            
+            <Col>
+            <HoverVideoPlayer
+               videoSrc={[
+                  { src: Vd2 , type: 'video/mp4' },
+               ]}
+            />
+            </Col>
+
+            
+            <Col>
+            <HoverVideoPlayer
+               videoSrc={[
+                  { src: Vd3 , type: 'video/mp4' },
+               ]}
+            />
+            </Col>
+
+         </Row>
+          </Container>
+          </div>
+        </section>
+
     </>
   );
 };
