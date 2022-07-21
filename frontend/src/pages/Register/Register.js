@@ -1,30 +1,23 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { useState, useEffect,useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader/Loader";
 import { register } from "../../actions/userActions";
 import { useNavigate } from "react-router-dom";
-import FormContainer from "../../components/FormContainer/FormContainer";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
-import { offset } from "@popperjs/core";
-import FloatingLabel from "react-bootstrap/FloatingLabel";
-import Select from "react-select"
-import countryList from "react-select-country-list"
+import Select from "react-select";
+import countryList from "react-select-country-list";
 import "react-phone-number-input/style.css";
-import PhoneInput from "react-phone-number-input"
-
+import PhoneInput from "react-phone-number-input";
+import registerPic from "../../img/Home/service-pic.jpg";
 
 
 const RegisterScreen = () => {
-
-
- 
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,14 +28,12 @@ const RegisterScreen = () => {
   const [street, setstreet] = useState("");
   const [phoneNumber, setphoneNumber] = useState("");
 
+  const options = useMemo(() => countryList().getData(), []);
 
+  const changeHandler = (country) => {
+    setcountry(country);
+  };
 
-     const options = useMemo(() => countryList().getData(), []);
-
-     const changeHandler = (country) => {
-       setcountry(country);
-     };
-     
   const Navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -50,7 +41,9 @@ const RegisterScreen = () => {
   const userRegister = useSelector((state) => state.userRegister);
   const { loading, error, userInfo } = userRegister;
 
-  const redirect = window.location.search ? window.location.search.split("=")[1] : "/";
+  const redirect = window.location.search
+    ? window.location.search.split("=")[1]
+    : "/";
 
   useEffect(() => {
     if (userInfo) {
@@ -92,17 +85,11 @@ const RegisterScreen = () => {
               <div className="card card-registration my-4">
                 <Row className="g-0">
                   <div className="col-xl-6 d-none d-xl-block">
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
-                      alt=""
-                      className="img-fluidR"
-                    />
+                    <img src={registerPic} alt="" className="img-fluidR" />
                   </div>
                   <div className="col-xl-6">
                     <div className="card-body p-md-5 text-black">
-                      <h3 className="mb-5 text-uppercase">
-                        Student registration form
-                      </h3>
+                      <h3 className="mb-5 text-uppercase">Register </h3>
                       <Form onSubmit={submitHandlers}>
                         <Row className="mb-3">
                           <Form.Group as={Col} controlId="formGridname">
@@ -292,6 +279,3 @@ const RegisterScreen = () => {
 };
 
 export default RegisterScreen;
-
-
-

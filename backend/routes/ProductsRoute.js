@@ -1,32 +1,45 @@
+const express = require("express");
+router = express.Router();
+
 const {
   getProducts,
   getProduct,
   createProductReview,
   getTopProducts,
-
+  addProduct,
+  deleteProduct,
+  updateProduct,
 } = require("../controllers/ProductController");
 const auth = require("../middleware/authJwt");
 const admin = require("../middleware/admin");
 const Router = require("express").Router();
 const ProductsModel = require("../GYMModules/ProductsSchema");
-const ProductRouter = Router;
 
-ProductRouter.get("/", getProducts);
+// router.route("/").get(getProducts).post(auth, admin,addProduct);
 
-ProductRouter.get("/:id", getProduct);
+router.get("/", getProducts);
 
-ProductRouter.route("/:id/reviews").post(auth,createProductReview);
-
-ProductRouter.get("/top",getTopProducts)
+router.post("/add",addProduct);
 
 
+router.get("/:id",getProduct)
 
+router.delete("/:id", deleteProduct);
 
-
-
+router.put("/:id", updateProduct);
 
 
 
 
+// router.post("/addProduct", [auth, admin], addProduct);
+// router
+//   .route("/:id")
+//   .get(getProduct)
+//   .delete(auth, admin, deleteProduct)
+//   .put(auth, admin, updateProduct);
 
-module.exports = ProductRouter;
+router.route("/:id/reviews").post(auth, createProductReview);
+
+router.get("/top", getTopProducts);
+
+module.exports = router;

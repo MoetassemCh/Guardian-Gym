@@ -36,6 +36,8 @@ const ProductsSchema = new Schema({
   image: {
     type: String,
     // required: true,
+    // default:
+    //   "http://res.cloudinary.com/dekceipha/image/upload/v1657994702/o9r5sq4xtxalnxbojora.jpg",
   },
   brand: {
     type: String,

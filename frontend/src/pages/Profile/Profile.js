@@ -43,7 +43,7 @@ const [picMessage, setPicMessage] = useState();
 
 const postDetails = (pics) => {
   setPicMessage(null);
-  if (pics.type === "image/jpeg" || pics.type === "image/png") {
+  if (pics.type === "image/jpeg" || pics.type === "image/png" || pics.type === "image/gif") {
     const data = new FormData();
     data.append("file", pics);
     data.append("upload_preset", "ummmrnoi");
@@ -223,7 +223,7 @@ setPic(user.pic);
                       <Form.Label>country</Form.Label>
                       <Select
                         options={options}
-                        value={country.label}
+                        value={country}
                         onChange={changeHandler}
                       ></Select>
                     </Form.Group>
@@ -271,15 +271,6 @@ setPic(user.pic);
               </Button>
             </Form>
 
-            <Col
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <img src={pic} alt={name} className="profilePic" />
-            </Col>
           </Row>
         </div>
       </Container>

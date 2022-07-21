@@ -4,8 +4,17 @@ import {
   userRegisterReducer,
   userDetailsReducer,
   userUpdateProfileReducer,
+  userlistReducer,
+  userDeleteReducer,
+  userUpdateReducer,
 } from "../src/Reducers/userReducers";
-import { productListReducer } from "./Reducers/ProductReducers";
+import {
+  productListReducer,
+  productDeleteReducer,
+  productCreateReducer,
+  productUpdateReducer,
+  productDetailsReducer,
+} from "./Reducers/ProductReducers";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
@@ -15,7 +24,14 @@ const reducer = combineReducers({
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
+  userList: userlistReducer,
+  userDelete: userDeleteReducer,
+  userUpdate:userUpdateReducer,
   productList: productListReducer,
+  productDelete: productDeleteReducer,
+  productCreate: productCreateReducer,
+  productUpdate: productUpdateReducer,
+  productDetails: productDetailsReducer,
 });
 
 const userInfoFromStoarge = localStorage.getItem("userInfo")

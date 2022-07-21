@@ -15,6 +15,8 @@ userCategoriesRoute.get("/", getCategories);
 // GET request for one catg (specified by its ID)
 userCategoriesRoute.get("/:id", getCategoryExercises);
 
+
+
 userCategoriesRoute.get("/exercise/:id", getExercises);
 
 

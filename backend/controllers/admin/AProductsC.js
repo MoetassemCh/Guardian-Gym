@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const asyncHandler=require("express-async-handler")
+const asyncHandler = require("express-async-handler");
 
 const ProductsModel = require("../../GYMModules/ProductsSchema");
 
@@ -27,17 +27,18 @@ const getProduct = async (req, res) => {
   }
 };
 
-const addProduct = async(req,res)=>{
-const product = new ProductsModel({
-  name: req.body.name,
-  price: req.body.price,
-  user: req.user._id,
-  brand: req.body.brand,
-  description: req.body.description,
-  countInStock: req.body.countInStock,
-  numReviews: req.body.numReviews,
-  category: req.body.category,
-});
+const addProduct = async (req, res) => {
+  const product = new ProductsModel({
+    name: req.body.name,
+    price: req.body.price,
+    user: req.user._id,
+    brand: req.body.brand,
+    description: req.body.description,
+    countInStock: req.body.countInStock,
+    numReviews: req.body.numReviews,
+    category: req.body.category,
+    image: req.body.image,
+  });
 
   await product.save((err, user) => {
     if (err) {
@@ -53,37 +54,28 @@ const product = new ProductsModel({
   });
 };
 
-
-
 const updateProduct = asyncHandler(async (req, res) => {
-    const {
-    name,
-    price,
-    description,
-    image,
-    brand,
-    category,
-    countInStock,
-  } = req.body
+  const { name, price, description, image, brand, category, countInStock } =
+    req.body;
 
   const product = await ProductsModel.findById(req.params.id);
 
   if (product) {
-    product.name = name
-    product.price = price
-    product.description = description
-    product.image = image
-    product.brand = brand
-    product.category = category
-    product.countInStock = countInStock
+    product.name = name;
+    product.price = price;
+    product.description = description;
+    product.image = image;
+    product.brand = brand;
+    product.category = category;
+    product.countInStock = countInStock;
 
-    const updatedProduct = await product.save()
-    res.json(updatedProduct)
+    const updatedProduct = await product.save();
+    res.json(updatedProduct);
   } else {
-    res.status(404)
-    throw new Error('Product not found')
+    res.status(404);
+    throw new Error("Product not found");
   }
-})
+});
 
 const deleteProduct = asyncHandler(async (req, res) => {
   const product = await ProductsModel.findById(req.params.id);
@@ -96,7 +88,6 @@ const deleteProduct = asyncHandler(async (req, res) => {
     throw new Error("Product not found");
   }
 });
-
 
 module.exports = {
   getProducts,

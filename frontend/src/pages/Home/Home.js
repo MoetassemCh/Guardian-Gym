@@ -27,8 +27,8 @@ const Home = () => {
                   <span>FITNESS ELEMENTS</span>
                   <h1>BMI CALCULATOR</h1>
                   <p>
-                    Gutim comes packed with the user-friendly BMI Calculator
-                    <br /> shortcode which lets
+                    Guardien Gym offers you to Calculate your Body Mass Index{" "}
+                    <br /> 
                   </p>
                   <Link to="/bmi" className="primary-btn">
                     Read More
@@ -39,10 +39,10 @@ const Home = () => {
           </Container>
         </div>
       </section>
-     <AboutSection/>
-     <ExercisesSection/>
-     <ProductSection/>
-     <Footer/>
+      <AboutSection />
+      <ExercisesSection />
+      <ProductSection />
+      <Footer />
     </>
   );
 };

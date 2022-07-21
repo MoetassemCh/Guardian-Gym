@@ -25,7 +25,7 @@ const ProductAll = ({ product }) => {
 
               <Card.Footer className="p-4 pt-0 border-top-0 bg-transparent">
                 <div className="text-center">
-                  <Link className="btn btn-outline-dark mt-auto" to="/">
+                  <Link className="btn btn-outline-dark mt-auto" to="">
                     View options
                   </Link>
                 </div>

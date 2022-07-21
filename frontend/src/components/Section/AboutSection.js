@@ -19,16 +19,13 @@ const AboutSection = () => {
               <div className="about-text">
                 <h2>Story About Us</h2>
                 <p className="first-para">
-                  Lorem ipsum proin gravida nibh vel velit auctor aliquet.
-                  Aenean pretium sollicitudin, nascetur auci elit consequat
-                  ipsutissem niuis sed odio sit amet nibh vulputate cursus a
-                  amet.
-                </p>
-                <p className="second-para">
-                  Etiam rhoncus. Maecenas tempus, tellus eget condimentum
-                  rhoncus, gravida quam semper libero sit amet. Etiam rhoncus.
-                  Maecenas tempus, tellus eget condimentum rhoncus, gravida quam
-                  semper libero sit amet.
+                  Today’s rental experience is broken. It’s outdated,
+                  exhausting, and slow. We spend hours of our lives searching
+                  just to settle for places that don’t feel like home. The
+                  nightmare ends now. Rento is on a mission to change the way
+                  you rent, forever. To make it easier, faster, and more human.
+                  By making this vision a reality, we’re creating opportunity
+                  for everyone to live better—from one fresh start to the next.
                 </p>
                 <Link to="/about" className="primary-btn1">
                   Read More

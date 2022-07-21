@@ -4,43 +4,39 @@ const User = require("../GYMModules/usersSchema");
 const asyncHandler = require("express-async-handler");
 const cookie = require("cookie-parser");
 
-
-
 exports.signin = async (req, res) => {
   const { email, password } = req.body;
 
   const user = await User.findOne({ email });
 
-   
-
   if (user && (await user.matchPassword(password))) {
-     res.status(200).json({
+    res.status(200).json({
       _id: user._id,
       name: user.name,
       email: user.email,
-      pic:user.pic,
+      pic: user.pic,
       isAdmin: user.isAdmin,
       token: generateToken(user._id),
     });
   } else {
-     res.status(404).send({
-    message: "Invalid email or password",
-  });
+    res.status(404).send({
+      message: "Invalid email or password",
+    });
   }
 };
 
-
-
-
-
 exports.signup = async (req, res) => {
-  const { name, email, password,
+  const {
+    name,
+    email,
+    password,
     gender,
     Age,
     phoneNumber,
-      country,
-      city,
-      street  }= req.body;
+    country,
+    city,
+    street,
+  } = req.body;
 
   const userExists = await User.findOne({ email });
 
@@ -57,10 +53,9 @@ exports.signup = async (req, res) => {
     gender,
     Age,
     phoneNumber,
-      country,
-      city,
-      street
-    
+    country,
+    city,
+    street,
   });
 
   if (user) {
@@ -78,31 +73,28 @@ exports.signup = async (req, res) => {
   }
 };
 
-
-
 exports.profile = asyncHandler(async (req, res) => {
-const user = await User.findById(req.user._id);
+  const user = await User.findById(req.user._id);
 
-if (user) {
-  res.json({
-    _id: user._id,
-    name: user.name,
-    email: user.email,
-    isAdmin: user.isAdmin,
-    Age: user.Age,
-    phoneNumber: user.phoneNumber,
-    country: user.country,
-    city: user.city,
-    street: user.street,
-    pic:user.pic
-  });
-} else {
-   res.status(404).send({
-     message: "User not found",
-   });
-}
+  if (user) {
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+      Age: user.Age,
+      phoneNumber: user.phoneNumber,
+      country: user.country,
+      city: user.city,
+      street: user.street,
+      pic: user.pic,
+    });
+  } else {
+    res.status(404).send({
+      message: "User not found",
+    });
+  }
 });
-
 
 exports.Updateprofile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
@@ -136,6 +128,56 @@ exports.Updateprofile = asyncHandler(async (req, res) => {
       isAdmin: updatedUser.isAdmin,
       token: generateToken(updatedUser._id),
     });
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+});
+
+exports.getUsers = asyncHandler(async (req, res) => {
+  const user = await User.find({});
+  res.json(user);
+});
+
+exports.deleteUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+  if (user) {
+    await user.remove();
+    res.json({ message: "User removed" });
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+});
+
+exports.updateUser = asyncHandler(async (req, res) => {
+  
+  const user = await User.findById(req.params.id);
+
+  if (user) {
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+    user.isAdmin = req.body.isAdmin;
+
+    const updatedUser = await user.save();
+
+    res.json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      isAdmin: updatedUser.isAdmin,
+    });
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+});
+
+exports.getUserbyId = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id).select("-password");
+
+  if (user) {
+    res.json(user);
   } else {
     res.status(404);
     throw new Error("User not found");

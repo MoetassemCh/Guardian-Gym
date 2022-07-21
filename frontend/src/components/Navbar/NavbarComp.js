@@ -69,6 +69,29 @@ const dispatch=useDispatch()
                   Login
                 </Nav.Link>
               )}
+
+              {userInfo && userInfo.isAdmin && (
+                <>
+                  <NavDropdown
+                    title="AdminDashboard"
+                    id="adminmenu"
+                    className="text-black"
+                  >
+                    <LinkContainer to="/admin/userList">
+                      <NavDropdown.Item>Users</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to="/admin/productlist">
+                      <NavDropdown.Item>Products</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to="/admin/Orders">
+                      <NavDropdown.Item>Orders</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to="/admin/Exercises">
+                      <NavDropdown.Item>Exercises</NavDropdown.Item>
+                    </LinkContainer>
+                  </NavDropdown>
+                </>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

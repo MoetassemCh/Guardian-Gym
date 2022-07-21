@@ -2,21 +2,9 @@ const mongoose = require("mongoose");
 const CategoryModel = require("../GYMModules/CategoriesShcema");
 
 const getCategories = async (req, res) => {
-  try {
-    //to return only those fields
-    projection = { categoryName: 1, _id: 1, categoryImg: 1 };
-
-    // add sorting to this field when you've done
-    const sortCategories = { categoryName: 1 };
-
-    const Categories = await CategoryModel.find()
-      .select(projection)
-      .sort(sortCategories);
-
-    res.status(200).json({ Categories });
-  } catch (error) {
-    res.status(500).json({ message: "Internal Error" });
-  }
+  const category = await CategoryModel.find()
+    .then((category) => res.json(category))
+    .catch((err) => res.status(400).json("Error" + err));
 };
 
 // GET request for one Category (specified by its id)
@@ -47,7 +35,6 @@ const getCategoryExercises = async (req, res) => {
   }
 };
 
-
 const getExercises = async (req, res) => {
   try {
     const projection = {
@@ -59,7 +46,6 @@ const getExercises = async (req, res) => {
     };
     const id = req.params.id;
 
-    
     const sortCategories = { exercisesName: 1 };
 
     const Category = await CategoryModel.findById(id)
@@ -76,9 +62,8 @@ const getExercises = async (req, res) => {
   }
 };
 
-
 module.exports = {
   getCategories,
   getCategoryExercises,
-  getExercises
+  getExercises,
 };

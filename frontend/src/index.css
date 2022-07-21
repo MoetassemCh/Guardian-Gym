@@ -25,6 +25,13 @@ margin-right: auto;
 }
 
 
+
+
+.cardCategoty{
+	margin-top:12rem;
+}
+
+
 /* <home> */
 
 .links{
@@ -497,6 +504,7 @@ height: 100%;
 .img-fluidR{
 	border-top-left-radius: .25rem;
  border-bottom-left-radius: .25rem;
+ height: 560px;
 }
 
 .card-registration .select-input.form-control[readonly]:not([disabled]) {
